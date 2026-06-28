@@ -1,0 +1,37 @@
+{% extends 'master/base.html' %}
+
+{% block body %}
+  {% include 'master/message.html' %}
+  <a href="{% url 'add_task' %}">Add New Task</a>
+
+  <title>Task | List</title>
+  <table>
+    <thead>
+      <tr>
+        <th>Sl No.</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Due Date</th>
+        <th>Priority</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for t in tasks %}
+        <tr>
+          <td>{{ forloop.counter }}</td>
+          <td>{{ t.title }}</td>
+          <td>{{ t.description }}</td>
+          <td>{{ t.due_date }}</td>
+          <td>{{ t.priority }}</td>
+          <td>{{ t.status }}</td>
+          <td>
+            <a href="{% url 'update_task' t.id %}">Edit</a>
+            <a href="{% url 'delete_task' t.id %}">Delete</a>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'master/base.html' %}
+
+{% block body %}
+  <div class="container">
+    <form action="" method="POST">
+      {% csrf_token %}
+      <label for="">Title</label>
+      <input type="text" name="title" id="" />
+      <label for="">Description</label>
+      <textarea name="description" id=""></textarea>
+      <label for="">Due Date</label>
+      <input type="date" name="due_date" id="" />
+      <label for="">Priority</label>
+      <select name="priority" id="">
+        <option value="low">Low</option>
+        <option value="medium">Medium</option>
+        <option value="high">High</option>
+      </select>
+      <label for="">Status</label>
+      <select name="status" id="">
+        <option value="pending">Pending</option>
+        <option value="in-progress">In Progress</option>
+        <option value="completed">Completed</option>
+      </select>
+      <button type="submit">Add Task</button>
+    </form>
+  </div>
+{% endblock %}

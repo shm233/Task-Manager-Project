@@ -1,0 +1,52 @@
+{% extends 'master/base.html' %}
+
+{% block body %}
+  <div class="container">
+    <form action="" method="POST">
+      {% csrf_token %}
+      <label for="">Title</label>
+      <input type="text" name="title" value="{{tasks.title}}" id="" />
+      <label for="">Description</label>
+      <textarea name="description" id="">{{tasks.description}}</textarea>
+      <label for="">Due Date</label>
+      <input type="date" name="due_date" value="{{tasks.due_date|date:'Y-m-d'}}" id="" />
+      <label for="">Priority</label>
+      <select name="priority" id="">
+        <option value="low" 
+        {% if tasks.priority == 'low' %}
+            selected
+        {% endif %}
+            >Low</option>
+        <option value="medium" 
+        {% if tasks.priority == 'medium' %}
+            selected
+        {% endif %}
+        >Medium</option>
+        <option value="high" 
+        {% if tasks.priority == 'high' %}
+            selected
+        {% endif %}
+        >High</option>
+      </select>
+      <label for="">Status</label>
+      <select name="status" id="">
+        <option value="pending" 
+        {% if tasks.status == 'pending' %}
+            selected
+        {% endif %}
+            >Pending</option>
+        <option value="in-progress"
+        {% if tasks.status == 'in-progress' %}
+            selected
+        {% endif %}
+        >In Progress</option>
+        <option value="completed"
+        {% if tasks.status == 'completed' %}
+            selected
+        {% endif %}
+        >Completed</option>
+      </select>
+      <button type="submit">Update Task</button>
+    </form>
+  </div>
+{% endblock %}
